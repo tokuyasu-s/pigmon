@@ -1,0 +1,33 @@
+settings:
+  legacy:
+    force: true
+    interval: 0s
+schema:
+- name: src
+  path: .
+  commands:
+    install:
+      status: true
+      method: go build -o ./tmp/main ./main.go
+    run:
+      status: true
+      method: ./tmp/main
+  watcher:
+    extensions:
+    - go
+    - html
+    paths:
+    - /
+    ignore:
+      paths:
+      - .git
+      - .realize
+      - vendor
+      - .mod
+      - .sum
+      - .git
+      - .realize
+      - .idea
+      - vendor
+      - realize/assets
+      - realize/bindata.go
