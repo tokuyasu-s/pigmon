@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS `pigmon` COLLATE 'utf8mb4_general_ci' ;
 
-GRANT ALL ON `pigmon`.* TO 'mysqluser'@'%' ;
+GRANT ALL ON `pigmon`.* TO 'mysqluser'@'%';
 
 USE pigmon;
 
@@ -18,6 +18,13 @@ create table m_acces_user(
  m_user_bikou text,
  m_user_stay text
 );
+
+
+create table test1(
+    m_password text not null,
+    m_user_name text not null
+);
+
 
 
 FLUSH PRIVILEGES ;

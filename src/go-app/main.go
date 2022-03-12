@@ -1,28 +1,20 @@
 package main
 
 import (
-	"net/http"
+	"github.com/pigmon/go-app/route"
 
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
+	config "github.com/pigmon/go-app/conf"
+
+	"github.com/sirupsen/logrus"
 )
 
 func main() {
-	// Echo instance
-	e := echo.New()
+	router := route.Init()
+	router.Start(":" + config.Config.Port)
 
-	// Middleware
-	e.Use(middleware.Logger())
-	e.Use(middleware.Recover())
-
-	// Routes
-	e.GET("/", hello)
-
-	// Start server
-	e.Logger.Fatal(e.Start(":9000"))
 }
+func init() {
 
-// Handler
-func hello(c echo.Context) error {
-	return c.String(http.StatusOK, "Hello, dd!\n")
+	logrus.SetLevel(logrus.DebugLevel)
+	logrus.SetFormatter(&logrus.JSONFormatter{})
 }
